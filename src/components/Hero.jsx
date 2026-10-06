@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
-import Ph from './Ph'
+import heroImg from '../assets/hero.jpg'
 
 export default function Hero() {
   return (
     <section id="home" className="relative bg-navy text-white overflow-hidden min-h-screen flex items-center">
-      <Ph label="Hero photo: students in class" className="absolute right-0 top-0 h-full w-full md:w-1/2 opacity-60 md:opacity-100" />
-      <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-transparent" />
+      <img src={heroImg} alt="Students walking on the Kanz-ul-Islam school campus" className="absolute inset-0 h-full w-full object-cover object-right" />
+      <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/70 to-navy/10" />
       <div className="relative mx-auto max-w-7xl px-5 pt-36 pb-20 w-full">
         <div className="flex items-center gap-3 text-xs tracking-[0.25em] text-sky font-semibold">
           <span className="h-px w-10 bg-gold" /> KNOWLEDGE · CHARACTER · CONFIDENCE
