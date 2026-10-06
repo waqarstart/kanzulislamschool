@@ -14,7 +14,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
   const linkCls = ({ isActive }) =>
-    `py-1 border-b-2 transition hover:text-gold ${isActive ? 'border-gold' : 'border-transparent'} ${scrolled ? 'text-navy' : 'text-white'}`
+    `relative py-1 transition-colors duration-300 hover:text-gold after:content-[''] after:absolute after:left-0 after:-bottom-0.5 after:h-0.5 after:w-full after:bg-gold after:origin-center after:transition-transform after:duration-300 after:ease-out ${isActive ? 'after:scale-x-100' : 'after:scale-x-0 hover:after:scale-x-100'} ${scrolled ? 'text-navy' : 'text-white'}`
   return (
     <header className={`fixed top-0 inset-x-0 z-50 transition ${scrolled ? 'bg-white/95 shadow backdrop-blur' : 'bg-transparent'}`}>
       <div className="mx-auto max-w-7xl px-5 h-[88px] flex items-center justify-between">

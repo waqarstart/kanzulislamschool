@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Heading from './Heading'
 
 const icons = {
@@ -13,6 +13,36 @@ const Icon = ({ name }) => (
 )
 const info = [['pin', 'Visit Us', '[School address, City, Pakistan]'], ['phone', 'Call Us', '[School phone number]'], ['mail', 'Email Us', '[School email address]'], ['clock', 'Office Hours', '[School office hours]']]
 const subjects = ['Admissions', 'Fee Structure', 'General Inquiry', 'Other']
+
+function Select({ value, onChange, options, placeholder }) {
+  const [open, setOpen] = useState(false)
+  const ref = useRef(null)
+  useEffect(() => {
+    const close = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false) }
+    const esc = e => { if (e.key === 'Escape') setOpen(false) }
+    document.addEventListener('mousedown', close)
+    document.addEventListener('keydown', esc)
+    return () => { document.removeEventListener('mousedown', close); document.removeEventListener('keydown', esc) }
+  }, [])
+  return (
+    <div ref={ref} className="relative mt-2">
+      <button type="button" onClick={() => setOpen(!open)} aria-haspopup="listbox" aria-expanded={open}
+        className={`flex w-full items-center justify-between rounded border bg-white px-4 py-3.5 text-left font-normal transition-all duration-300 ${open ? 'border-brand ring-2 ring-brand/15' : 'border-slate-200 hover:border-brand'} ${value ? 'text-navy' : 'text-slate-400'}`}>
+        {value || placeholder}
+        <svg viewBox="0 0 24 24" className={`h-4 w-4 text-brand transition-transform duration-300 ${open ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
+      </button>
+      <ul role="listbox" className={`absolute z-20 mt-2 w-full origin-top overflow-hidden rounded-lg border border-slate-100 bg-white shadow-xl shadow-navy/10 transition-all duration-200 ${open ? 'scale-y-100 opacity-100' : 'pointer-events-none scale-y-95 opacity-0'}`}>
+        {options.map(o => (
+          <li key={o} role="option" aria-selected={value === o} onClick={() => { onChange(o); setOpen(false) }}
+            className={`flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-normal transition-colors duration-200 ${value === o ? 'bg-brand/10 font-semibold text-brand' : 'text-slate-600 hover:bg-navy hover:text-white'}`}>
+            {o}
+            {value === o && <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12l5 5 9-10" /></svg>}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
 
 export function ContactSection() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' })
@@ -51,14 +81,9 @@ export function ContactSection() {
                   <label className={label}>Email<input type="email" className={field} value={form.email} onChange={set('email')} placeholder="name@email.com" /></label>
                   <label className={label}>Phone<input required className={field} value={form.phone} onChange={set('phone')} placeholder="+92" /></label>
                 </div>
-                <label className={label}>Subject
-                  <select className={field} value={form.subject} onChange={set('subject')}>
-                    <option value="">Select a subject</option>
-                    {subjects.map(s => <option key={s}>{s}</option>)}
-                  </select>
-                </label>
+                <div><span className={label}>Subject</span><Select value={form.subject} onChange={v => setForm({ ...form, subject: v })} options={subjects} placeholder="Select a subject" /></div>
                 <label className={label}>Message<textarea rows="5" className={field} value={form.message} onChange={set('message')} placeholder="Tell us how we can help..." /></label>
-                <button className="btn w-full rounded bg-brand py-4 font-semibold text-white hover:bg-navy transition">Send Message →</button>
+                <button className="btn w-full rounded bg-brand py-4 font-semibold text-white hover:bg-navy transition">Send Message</button>
               </div>
             )}
           </form>
@@ -85,8 +110,8 @@ export function CtaBanner() {
             <p className="mt-2 text-blue-100">Join our community focused on learning, character and growth.</p>
           </div>
           <div className="flex gap-3">
-            <Link to="/admissions" className="btn rounded bg-white text-brand px-6 py-3 font-semibold">Apply Now →</Link>
-            <Link to="/contact" className="btn rounded border border-white/60 px-6 py-3 font-semibold">Contact Us →</Link>
+            <Link to="/admissions" className="btn rounded bg-white text-brand px-6 py-3 font-semibold">Apply Now</Link>
+            <Link to="/contact" className="btn rounded border border-white/60 px-6 py-3 font-semibold">Contact Us</Link>
           </div>
         </div>
       </section>

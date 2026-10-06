@@ -35,7 +35,7 @@ export function EventsSection() {
         <div className="mx-auto max-w-7xl px-5">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <Heading eyebrow="News & events" title="Moments From Our School" text="Celebrating learning, participation and the moments that bring our community together." />
-            <Link to="/gallery" className="btn rounded border px-5 py-2.5 text-sm font-semibold text-navy hover:bg-navy hover:text-white transition">View All Events →</Link>
+            <Link to="/gallery" className="btn rounded border px-5 py-2.5 text-sm font-semibold text-navy hover:bg-navy hover:text-white transition">View All Events</Link>
           </div>
           <div className="mt-10 grid md:grid-cols-3 gap-6">
             {events.map(([tag, date, title, text]) => (

@@ -13,7 +13,7 @@ export function Testimonials() {
           <Heading eyebrow="What our community says" title="Voices From Our Community" center />
           <div className="mt-12 grid md:grid-cols-3 gap-5">
             {voices.map(([n, r, q]) => (
-              <figure key={n} className="bg-white rounded-lg p-7 shadow-sm">
+              <figure key={n} className="bg-white rounded-lg p-7 shadow-sm transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-xl hover:shadow-navy/15">
                 <div className="text-4xl text-gold leading-none">“</div>
                 <blockquote className="mt-2 text-slate-600">{q}</blockquote>
                 <figcaption className="mt-6 pt-4 border-t flex items-center gap-3"><span className="h-9 w-9 rounded-full bg-brand/20" /><span><b className="block text-sm text-navy">{n}</b><span className="text-xs text-slate-400">{r}</span></span></figcaption>
@@ -37,8 +37,15 @@ export function Faq() {
           <div className="divide-y border-y">
             {faqs.map(([q, a], i) => (
               <div key={q}>
-                <button onClick={() => setOpen(open === i ? -1 : i)} className="w-full flex justify-between py-5 text-left font-semibold text-navy">{q}<span>{open === i ? '⌃' : '⌄'}</span></button>
-                {open === i && <p className="pb-5 text-slate-500">{a}</p>}
+                <button onClick={() => setOpen(open === i ? -1 : i)} aria-expanded={open === i} className="group w-full flex items-center justify-between gap-4 py-5 text-left font-semibold text-navy transition-colors duration-300 hover:text-brand">
+                  {q}
+                  <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${open === i ? 'rotate-180 border-brand bg-brand text-white' : 'border-slate-200 text-slate-500 group-hover:border-brand group-hover:text-brand'}`}>
+                    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
+                  </span>
+                </button>
+                <div className={`grid transition-all duration-500 ease-in-out ${open === i ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+                  <div className="overflow-hidden"><p className="pb-5 text-slate-500">{a}</p></div>
+                </div>
               </div>
             ))}
           </div>
