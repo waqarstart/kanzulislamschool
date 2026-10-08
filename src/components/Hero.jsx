@@ -3,7 +3,7 @@ import heroImg from '../assets/hero.jpg'
 
 export default function Hero() {
   return (
-    <section id="home" className="relative bg-navy text-white overflow-hidden min-h-screen flex items-center">
+    <section data-noreveal id="home" className="relative bg-navy text-white overflow-hidden min-h-screen flex items-center">
       <img src={heroImg} alt="Students walking on the Kanz-ul-Islam school campus" className="absolute inset-0 h-full w-full object-cover object-right" />
       <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/70 to-navy/10" />
       <div className="relative mx-auto max-w-7xl px-5 pt-36 pb-20 w-full">

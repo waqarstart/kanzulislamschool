@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { FaFacebookF, FaYoutube, FaInstagram, FaWhatsapp } from 'react-icons/fa'
+import { WHATSAPP_URL } from '../config'
 import logo from '../assets/logo.jpeg'
 
 // Replace the href values with the school's real social links
@@ -7,7 +8,7 @@ const socials = [
   ['Facebook', 'https://facebook.com/', FaFacebookF, 'hover:bg-[#1877F2]'],
   ['YouTube', 'https://youtube.com/', FaYoutube, 'hover:bg-[#FF0000]'],
   ['Instagram', 'https://instagram.com/', FaInstagram, 'hover:bg-[linear-gradient(45deg,#f09433,#dc2743,#bc1888)]'],
-  ['WhatsApp', 'https://wa.me/92XXXXXXXXXX', FaWhatsapp, 'hover:bg-[#25D366]'],
+  ['WhatsApp', WHATSAPP_URL, FaWhatsapp, 'hover:bg-[#25D366]'],
 ]
 
 const cols = [
