@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
-import Ph from './Ph'
+import heroImg from '../assets/hero.jpg'
 
 export default function Hero() {
   return (
-    <section id="home" className="relative bg-navy text-white overflow-hidden min-h-screen flex items-center">
-      <Ph label="Hero photo: students in class" className="absolute right-0 top-0 h-full w-full md:w-1/2 opacity-60 md:opacity-100" />
-      <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-transparent" />
+    <section data-noreveal id="home" className="relative bg-navy text-white overflow-hidden min-h-screen flex items-center">
+      <img src={heroImg} alt="Students walking on the Kanz-ul-Islam school campus" className="absolute inset-0 h-full w-full object-cover object-right" />
+      <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/70 to-navy/10" />
       <div className="relative mx-auto max-w-7xl px-5 pt-36 pb-20 w-full">
         <div className="flex items-center gap-3 text-xs tracking-[0.25em] text-sky font-semibold">
           <span className="h-px w-10 bg-gold" /> KNOWLEDGE · CHARACTER · CONFIDENCE
@@ -16,8 +16,8 @@ export default function Hero() {
         <p className="font-urdu text-sky text-lg mt-6 leading-loose">یہی چراغ جلیں گے تو روشنی ہوگی</p>
         <p className="mt-3 max-w-lg text-slate-300 text-lg">At Kanz-ul-Islam Beacon Model School, we nurture knowledge, character and confidence to prepare students for a brighter future.</p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <Link to="/admissions" className="btn rounded bg-brand px-6 py-3 font-semibold hover:bg-sky hover:text-navy transition">Apply for Admission →</Link>
-          <Link to="/about" className="btn rounded border border-white/60 px-6 py-3 font-semibold hover:bg-white hover:text-navy transition">Explore Our School →</Link>
+          <Link to="/admissions" className="btn rounded bg-brand px-6 py-3 font-semibold hover:bg-sky hover:text-navy transition">Apply for Admission</Link>
+          <Link to="/about" className="btn rounded border border-white/60 px-6 py-3 font-semibold hover:bg-white hover:text-navy transition">Explore Our School</Link>
         </div>
       </div>
     </section>

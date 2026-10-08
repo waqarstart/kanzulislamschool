@@ -13,7 +13,7 @@ export function WhyUs() {
           <Heading eyebrow="Why choose us" title="A school that cares about the whole child" center />
           <div className="mt-12 grid md:grid-cols-3 gap-5">
             {why.map(([t, d], i) => (
-              <div key={t} className="bg-white rounded-lg p-7 shadow-sm hover:shadow-md transition">
+              <div key={t} className="bg-white rounded-lg p-7 shadow-sm transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-xl hover:shadow-navy/15">
                 <div className="text-xs text-slate-300 text-right">0{i + 1}</div>
                 <h3 className="mt-2 font-bold text-navy">{t}</h3>
                 <p className="mt-2 text-sm text-slate-500">{d}</p>
@@ -35,9 +35,9 @@ export function ProgramsList() {
           <Heading eyebrow="Academics" title="Programs for every stage" center />
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {programs.map(([t, d]) => (
-              <div key={t} className="rounded-lg border bg-white overflow-hidden hover:shadow-lg hover:-translate-y-1 transition">
+              <div key={t} className="rounded-lg border bg-white overflow-hidden shadow-sm transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-xl hover:shadow-navy/15">
                 <Ph label={t} className="h-40" />
-                <div className="p-5"><h3 className="font-bold text-navy">{t}</h3><p className="mt-2 text-sm text-slate-500">{d}</p><Link to="/admissions" className="link-slide mt-4 inline-block text-sm font-semibold text-brand">Explore Program →</Link></div>
+                <div className="p-5"><h3 className="font-bold text-navy">{t}</h3><p className="mt-2 text-sm text-slate-500">{d}</p></div>
               </div>
             ))}
           </div>

@@ -1,3 +1,4 @@
+import Lightbox from './Lightbox'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import Heading from './Heading'
@@ -35,7 +36,7 @@ export function EventsSection() {
         <div className="mx-auto max-w-7xl px-5">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <Heading eyebrow="News & events" title="Moments From Our School" text="Celebrating learning, participation and the moments that bring our community together." />
-            <Link to="/gallery" className="btn rounded border px-5 py-2.5 text-sm font-semibold text-navy hover:bg-navy hover:text-white transition">View All Events →</Link>
+            <Link to="/gallery" className="btn rounded border px-5 py-2.5 text-sm font-semibold text-navy hover:bg-navy hover:text-white transition">View All Events</Link>
           </div>
           <div className="mt-10 grid md:grid-cols-3 gap-6">
             {events.map(([tag, date, title, text]) => (
@@ -56,6 +57,7 @@ export function EventsSection() {
 }
 
 export function GallerySection() {
+  const [active, setActive] = useState(null)
   const [tab, setTab] = useState('All')
   const shown = gallery.filter(([c]) => tab === 'All' || c === tab)
   return (
@@ -69,8 +71,14 @@ export function GallerySection() {
             </div>
           </div>
           <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3">
-            {shown.map(([c, l], i) => <Ph key={l} label={l} className={`rounded-lg ${i % 5 === 0 ? 'row-span-2 h-[26rem]' : 'h-48'}`} />)}
+            {shown.map(([c, l, src], i) => (
+              <button key={l} type="button" onClick={() => setActive(i)} aria-label={`Open ${l}`} className={`group relative overflow-hidden rounded-lg ${i % 5 === 0 ? 'row-span-2 h-[26rem]' : 'h-48'}`}>
+                {src ? <img src={src} alt={l} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" /> : <Ph label={l} className="h-full w-full transition-transform duration-500 group-hover:scale-110" />}
+                <span className="absolute inset-0 flex items-center justify-center bg-navy/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"><svg viewBox="0 0 24 24" className="h-8 w-8 text-white" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3M11 8v6M8 11h6" /></svg></span>
+              </button>
+            ))}
           </div>
+          {active !== null && <Lightbox items={shown} index={active} onClose={() => setActive(null)} onChange={setActive} />}
         </div>
       </section>
     

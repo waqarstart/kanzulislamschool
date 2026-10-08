@@ -9,3 +9,10 @@ body { @apply font-sans text-slate-700 antialiased; }
   .btn { @apply transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:scale-[0.98]; }
   .link-slide { @apply inline-block transition-transform duration-300 ease-out hover:translate-x-1; }
 }
+
+/* scroll reveal */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease-out, transform .7s ease-out; }
+.reveal.reveal-in { opacity: 1; transform: none; }
+@keyframes lbIn { from { opacity: 0; } to { opacity: 1; } }
+.lb-in { animation: lbIn .25s ease-out; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
