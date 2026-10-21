@@ -7,6 +7,7 @@ import Admissions from './pages/Admissions'
 import Events from './pages/Events'
 import Gallery from './pages/Gallery'
 import Contact from './pages/Contact'
+import Uniform from './pages/Uniform'
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/events" element={<Events />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path='/uniform' element={<Uniform />} />
       </Route>
     </Routes>
   )

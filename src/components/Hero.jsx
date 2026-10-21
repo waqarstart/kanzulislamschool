@@ -10,13 +10,15 @@ export default function Hero() {
         <div className="flex items-center gap-3 text-xs tracking-[0.25em] text-sky font-semibold">
           <span className="h-px w-10 bg-gold" /> KNOWLEDGE · CHARACTER · CONFIDENCE
         </div>
+        <div className="flex flex-row justify-between">
         <h1 className="mt-6 text-5xl md:text-7xl font-extrabold leading-[1.02] tracking-tight uppercase max-w-2xl">
           Inspiring minds. Building character. <span className="text-sky">Shaping futures.</span>
         </h1>
-        <p className="font-urdu text-sky text-lg mt-6 leading-loose">یہی چراغ جلیں گے تو روشنی ہوگی</p>
+        <p className="font-urdu text-white text-5xl mt-6 leading-loose">یہی چراغ جلیں گے تو روشنی ہوگی</p>
+        </div>
         <p className="mt-3 max-w-lg text-slate-300 text-lg">At Kanz-ul-Islam Beacon Model School, we nurture knowledge, character and confidence to prepare students for a brighter future.</p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <Link to="/admissions" className="btn rounded bg-brand px-6 py-3 font-semibold hover:bg-sky hover:text-navy transition">Apply for Admission</Link>
+          {/* <Link to="/admissions" className="btn rounded bg-brand px-6 py-3 font-semibold hover:bg-sky hover:text-navy transition">Apply for Admission</Link> */}
           <Link to="/about" className="btn rounded border border-white/60 px-6 py-3 font-semibold hover:bg-white hover:text-navy transition">Explore Our School</Link>
         </div>
       </div>
